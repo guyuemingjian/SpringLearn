@@ -1,0 +1,14 @@
+----------------------------------------------------------------
+-data access/integration-     |   -web-
+jdbc         orm              |   websocket         servlet
+oxm          jms              |   web               portlet
+transations                   |
+----------------------------------------------------------------
+aop          aspects              instrumentation   messaging
+----------------------------------------------------------------
+                      -core container-
+beans        core                 context           spEL
+----------------------------------------------------------------
+
+
+eclipse 插件  spring tool suite

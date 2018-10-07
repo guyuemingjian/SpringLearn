@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 使用scope 配置bean的作用域 (默认为sington) sington : 在容器生命周期内只创建这一个bean prototype: 
+		容器初始化时不创建bean ，使用时创建新bean实例 -->
+	<bean id="address"
+		class="SpringLearn.Demo01.Beans03_AutoIOC.Address" scope="prototype">
+		<property name="city" value="HeFei"></property>
+		<property name="street" value="HuiZhouDaDao"></property>
+	</bean>
+
+	<bean id="car" class="SpringLearn.Demo01.Beans03_AutoIOC.Car">
+		<property name="brand" value="BWM"></property>
+		<property name="price" value="30000"></property>
+	</bean>
+
+	<!-- 用autowire指定自动装配类型 -->
+	<!-- byname 根据bean名字和bean的 setter 进行自动装配 ，若没有匹配则不装 -->
+	<bean id="p1" class="SpringLearn.Demo01.Beans03_AutoIOC.Person"
+		autowire="byName" init-method="initP" destroy-method="destroyP">
+		<property name="name" value="tom1"></property>
+		<property name="age" value="14"></property>
+	</bean>
+
+	<!-- byType 根据bean类型进行自动装配 ，若没有匹配则不装 -->
+	<bean id="p2" class="SpringLearn.Demo01.Beans03_AutoIOC.Person"
+		autowire="byType">
+		<property name="name" value="tom2"></property>
+		<property name="age" value="15"></property>
+	</bean>
+
+	<!-- 配置间继成 -->
+	<!-- 不是所有都继承 例如autowire abstract -->
+	<bean id="p3" parent="p1">
+		<property name="name" value="tom3"></property>
+	</bean>
+
+	<bean id="p4" class="SpringLearn.Demo01.Beans03_AutoIOC.Person">
+		<property name="name" value="tom4"></property>
+		<property name="age" value="16"></property>
+		<property name="car" value="#{car}"></property>
+		<property name="address" ref="address"></property>
+	</bean>
+</beans>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 通过静态工厂方法配置bean -->
+	<!-- !!!注意是配置bean实例 ，不是配置静态工厂方法 -->
+	<bean id="car"
+		class="SpringLearn.Demo01.Beans05_StaticFactory.StaticFactory"
+		factory-method="getCar">
+		<!-- 用constructor-arg传递参数 -->
+		<constructor-arg value="BWM"></constructor-arg>
+	</bean>
+
+	<!-- ================================= -->
+
+	<!-- 配置工厂实例 -->
+	<bean id="cars"
+		class="SpringLearn.Demo01.Beans05_StaticFactory.InstanceFactory"></bean>
+
+	<!-- 得到实例 -->
+	<bean id="car2"	factory-bean="cars" factory-method="getCar">
+		<constructor-arg value="BWM"></constructor-arg>
+	</bean>
+
+</beans>

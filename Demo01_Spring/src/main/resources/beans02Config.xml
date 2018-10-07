@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+
+	<!-- 关联配置 -->
+	<bean id="person" class="SpringLearn.Demo01.Beans02_Ref.Person">
+		<property name="name" value="tom"></property>
+		<property name="age" value="14"></property>
+		<property name="car" ref="car4"></property>
+	</bean>
+
+	<bean id="car4" class="SpringLearn.Demo01.Beans02_Ref.Car">
+		<constructor-arg index="0" value="品牌4"></constructor-arg>
+		<constructor-arg index="1" value="公司4"></constructor-arg>
+		<!-- 价格 -->
+		<constructor-arg index="2" value="30004"></constructor-arg>
+		<!-- 速度 -->
+		<constructor-arg index="3" value="164"></constructor-arg>
+	</bean>
+
+	<!-- 级联 -->
+	<bean id="person1" class="SpringLearn.Demo01.Beans02_Ref.Person">
+		<property name="name" value="tom1"></property>
+		<property name="age" value="15"></property>
+		<property name="car">
+			<bean id="car5" class="SpringLearn.Demo01.Beans02_Ref.Car"></bean>
+		</property>
+		<property name="car.brand" value="品牌6"></property>
+		<property name="car.company" value="公司6"></property>
+		<property name="car.price" value="1236"></property>
+		<property name="car.speed" value="126"></property>
+	</bean>
+
+	<!-- 集合 -->
+	<bean id="person2" class="SpringLearn.Demo01.Beans02_Ref.Person">
+		<property name="name" value="tom1"></property>
+		<property name="age" value="15"></property>
+		<property name="cars">
+			<list>
+				<ref bean="car4" />
+				<!--car5 是內部bean 訪問不到 <ref bean="car5"/> -->
+				<ref bean="car6" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="car6" class="SpringLearn.Demo01.Beans02_Ref.Car">
+		<constructor-arg index="0" value="品牌6"></constructor-arg>
+		<constructor-arg index="1" value="公司6"></constructor-arg>
+		<!-- 价格 -->
+		<constructor-arg index="2" value="30006"></constructor-arg>
+		<!-- 速度 -->
+		<constructor-arg index="3" value="166"></constructor-arg>
+	</bean>
+
+	<!-- 需要导入 p命名空间 -->
+	<bean id="person3" class="SpringLearn.Demo01.Beans02_Ref.Person"
+		p:name="tom3" p:age="14" p:cars-ref="cars">
+	</bean>
+
+	<!-- 建立独立集合 需要导入xmlns:util="http://www.springframework.org/schema/util" -->
+	<util:list id="cars">
+		<ref bean="car4" />
+		<ref bean="car6" />
+	</util:list>
+
+</beans>

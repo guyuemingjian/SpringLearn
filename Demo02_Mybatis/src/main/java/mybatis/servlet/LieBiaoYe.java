@@ -8,11 +8,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import mybatis.dao.GetData;
 import mybatis.dao.beans.Test;
-
 
 /**
  * 
@@ -26,7 +26,8 @@ import mybatis.dao.beans.Test;
 public class LieBiaoYe extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	private static Logger logger = Logger.getLogger(LieBiaoYe.class);  
+	private static Logger logger = LogManager.getLogger(LieBiaoYe.class);
+
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -42,14 +43,14 @@ public class LieBiaoYe extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		//列表页初期化数据全显示
+		// 列表页初期化数据全显示
 		GetData gData = new GetData();
-		//查询全表
+		// 查询全表
 		List<Test> tList = gData.getData();
 		logger.debug(tList.toString());
-		//返回页面数据
+		// 返回页面数据
 		request.setAttribute("data", tList);
-		//跳转
+		// 跳转
 		request.getRequestDispatcher("/WEB-INF/tradition/LieBiaoYe.jsp").forward(request, response);
 	}
 
@@ -59,21 +60,21 @@ public class LieBiaoYe extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		//取得参数
+
+		// 取得参数
 		String c1 = request.getParameter("c1");
 		String c2 = request.getParameter("c2");
-		System.out.println(c1 + "," + c2 );
-		//列表页数据取得
+		System.out.println(c1 + "," + c2);
+		// 列表页数据取得
 		GetData gData = new GetData();
-		//查询
+		// 查询
 		List<Test> tList = gData.getAnSearchData(c1, c2);
 		System.out.println(tList.toString());
-		//返回页面数据
+		// 返回页面数据
 		request.setAttribute("c1", c1);
 		request.setAttribute("c2", c2);
 		request.setAttribute("data", tList);
-		//跳转
+		// 跳转
 		request.getRequestDispatcher("/WEB-INF/tradition/LieBiaoYe.jsp").forward(request, response);
 	}
 

@@ -1,0 +1,27 @@
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": "hu.start.mode.TestUser",
+      "name": "testuser",
+      "type": "hu.start.mode.TestUser"
+    }
+  ],
+  "properties": [
+    {
+      "sourceType": "hu.start.mode.TestUser",
+      "name": "testuser.user-id",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "hu.start.mode.TestUser",
+      "name": "testuser.user-nm",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "hu.start.mode.TestUser",
+      "name": "testuser.user-pw",
+      "type": "java.lang.String"
+    }
+  ]
+}

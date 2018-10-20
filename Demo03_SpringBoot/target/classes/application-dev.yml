@@ -1,0 +1,36 @@
+#这个和application.properties是一样的作用,层次更加明确
+server:
+  port: 8082
+  servlet:
+    context-path: /springBoot
+#改变了访问的端口 和命名空间 真实访问变成 http://127.0.0.1:8082/springBoot/
+
+
+#通过注解取得yml文件的参数
+testparam: "Hello Spring Boot! testParam get"
+#配置里面再调用配置的参数
+testparam1: "testParam1 get testParam :${testparam}"
+
+#直接将参数注入类
+testuser: 
+  userId: 01
+  userNm: hu
+  userPw: aaaa1111
+
+#jpa配置
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test?characterEncoding=utf-8&serverTimezone=UTC&useSSL=false
+    username: root
+    password: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+#访问页面的模板引擎
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates/
+    suffix: .html

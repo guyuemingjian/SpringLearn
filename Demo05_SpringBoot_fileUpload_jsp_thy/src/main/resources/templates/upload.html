@@ -1,0 +1,19 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"></meta>
+</head>
+<body>
+	<form action="/singleFileUpload" method="post" enctype="multipart/form-data">
+		<label>单文件上传</label><br/>
+		<input type="file" name="file"/><br/>
+		<input type="submit"/>
+	</form>
+	<form action="/multiFileUpload" method="post" enctype="multipart/form-data">
+		<label>多文件上传</label><br/>
+		<input type="file" name="file"/><br/>
+		<input type="file" name="file"/><br/>
+		<input type="file" name="file"/><br/>
+		<input type="submit"/>
+	</form>
+</body>
+</html>

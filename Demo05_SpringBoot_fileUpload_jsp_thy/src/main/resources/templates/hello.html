@@ -1,0 +1,39 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"></meta>
+<title>hello</title>
+</head>
+<body>
+	<h1 th:text="${message}">内容替换</h1>
+	<h2 th:text="hello + ${message} + world">字符串拼接</h2>
+	<hr />
+	<h3 th:if="${flag == '1'}">判断显示</h3>
+	<hr />
+	<a th:href="@{http:www.baidu.com}">超链接</a>
+	<hr />
+	<div>
+		<table>
+			<thead>
+				<tr>
+					<td>循环</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="u,i:${users}">
+					<td th:text="${u}"></td>
+					<td th:text="${u.name}"></td>
+					<td th:text="${u.age}"></td>
+					<td th:text="${u.pasw}"></td>
+					<td th:text="${i}"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<hr />
+	<div th:switch="${select}">
+		<p th:case="s1">switch case</p>
+		<p th:case="s2">选择 判断</p>
+		<p th:case="s2">默认选择</p>
+	</div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+spring:
+  http:
+    encoding:
+      force: true
+      charset: utf-8
+      enabled: true
+#支持最大文件
+  servlet:
+    multipart:
+      max-file-size: 100MB
+#文件请求最大限制
+      max-request-size: 100MB
+#使用jsp
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
+#页面模板关闭缓存，刷新更新页面效果
+  thymeleaf:
+    cache: false
+
+test:
+  title: 你好
+  description: 测试用
+  file: D:/Temp/
